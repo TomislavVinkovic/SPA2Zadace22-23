@@ -10,6 +10,7 @@ typedef list<pair<int, float>> Chain;
 
 vector<int> digits(int v)
 {
+    int vc = v;
     if (v == 0) {
         return {0};
     }
@@ -21,6 +22,7 @@ vector<int> digits(int v)
         digits.push_back(v % 10);
         v /= 10;
     }
+    reverse(digits.begin(), digits.end());
     return digits;
 }
 
