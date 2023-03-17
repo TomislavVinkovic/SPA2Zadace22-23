@@ -89,7 +89,7 @@ class BST {
             y = y->parent;
         }
 
-        return node;
+        return y;
     }
 
     Node* predecessor(Node *node) {
@@ -105,7 +105,7 @@ class BST {
             y = y->parent;
         }
 
-        return node;
+        return y;
     }
 
     Node* search(int key, Node* n) {
@@ -273,15 +273,16 @@ int main(int argc, char const *argv[]) {
 
     cout << endl;
 
-    cout << "Minimalni kljuc u stablu: " << tree.find_min() << endl;
-    cout << "Maksimalni kljuc u stablu: " << tree.find_max() << endl;
+    cout << tree.find_min() << endl;
+    cout << tree.find_max() << endl;
 
-    cout << "Sljedbenik cvora s kljucem 8: " << tree.successor(8) << endl;
-    cout << "Prethodnik cvora s kljucem 10: " << tree.predecessor(10) << endl;
+    cout << tree.successor(8) << endl;
+    cout << tree.predecessor(10) << endl;
 
     tree.BSTdelete(10);
 
     tree.print();
     cout << endl;
+        
     return 0;
 }

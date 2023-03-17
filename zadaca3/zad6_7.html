@@ -1,0 +1,108 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <style>
+        .codebox {
+            background: rgb(189, 189, 189);
+        }
+        code {
+            font-size: 16px;
+        }
+        p {
+            font-size: 20px !important;
+        }
+    </style>
+
+    <body>
+        <h1>Zadatak 6</h1>
+        <h2>Insert: (koristim isti s predavanja)</h1>
+        <div class="codebox">
+            <code>
+                <p>tree_insert(T, z) {</p>
+                    <p>&nbsp y = nil;</p>
+                    <p>&nbsp x = T.root;</p>
+                    <p>&nbsp while(x != nil) {</p> 
+                        <p>&nbsp&nbsp y = x;</p>
+                        <p>&nbsp&nbsp if(z.key < x.key) {</p>
+                            <p>&nbsp&nbsp&nbsp x = x.left</p>
+                            <p>&nbsp&nbsp }</p>
+                            <p>&nbsp else x = x.right</p>
+                            <p>&nbsp }</p>
+                            <p>&nbsp z.p = y;</p>
+                            <p>&nbsp if(y == nil) {</p>
+                        <p>&nbsp&nbsp T.root = z;</p>
+                        <p>&nbsp }</p>
+                        <p>&nbsp elif(z.key < y.key) {</p>
+                            <p>&nbsp&nbsp y.left = z;</p>
+                            <p>&nbsp }</p>
+                            <p>&nbsp else y.right = z;</p>
+                <p>}</p>
+            </code>
+        </div>
+
+        <h2>Search: (također s predavanja)</h2>
+        <div class="codebox">
+            <code>
+                <p>tree_insert(x, k) {</p>
+                    <p>&nbsp&nbsp if(x.key == k || x == nil) return x</p>
+                    <p>&nbsp&nbsp if(k < x.key) return tree_search(x.left, k)</p>
+                    <p>&nbsp&nbsp else return tree_search(x.right, k)</p>
+                <p>}</p>
+            </code>
+        </div>
+
+        <h2>Analiza</h2>
+        <p>
+            Iako je jedan algoritam rekurzivan, a jedan iterativan, vidljivo je da se oba algoritma izvršavaju u O(h) vremenu,
+            gdje je h visina stabla. <br>
+            Nadalje, iz uvjeta u petlji prvog i rekurziji drugog vidimo da će oba algoritma proći isti put da dođu do nodea
+            koji im treba, <br> do na rubni uvjet rekurzije. <br>
+            Kako kod searcha taj element po pretpostavci, unutar stabla, to znači da će search proći istim nodeovima, a kao jedan
+            više računamo novokreirani node. <br>
+            <i>Prethodna rečenica dokazuje tvrdnju.</i>
+        </p>
+
+        <h1>Zadatak 7</h1>
+        
+        <h2><u>Insert koristim iz prošlog zadatka</u></h2>
+
+        <h2>Inorder print</h1>
+        <div class="codebox">
+            <code>
+                <p>inorder_print(x){</p>
+                <p>&nbsp if(x != nil) {</p>
+                <p>&nbsp &nbsp inorder_print(x.left);</p>
+                <p>&nbsp &nbsp print(x.key)</p>
+                <p>&nbsp &nbsp inorder_print(x.right);</p>
+                <p>&nbsp }</p>
+                <p>}</p>
+            </code>
+        </div>
+
+        <h2>Analiza</h1>
+        <h3>Inorder print:</h2>
+        <p>
+            Inorder print ima vremensku slozenost O(n). To je nekako i očito jer moramo proći svaki node u stablu, znači imamo n rekurzivnih poziva od kojih svaki ima složenost O(1).
+        </p>
+
+        <h2>Insert</h2>
+        <p>
+            Jedan insert ima vremensku složenost O(h) gdje je h visina stabla. Kako inserata radimo n, imat ćemo vremensku složenost O(n*h). <br>
+            U najboljem slučaju, visina stabla je lg n, gdje je n broj elemenata. To bi značilo savršenu ili gotovo savršenu balansiranost našeg stabla, <br>
+            tj. da imamo približno jednako elemenata sa svake strane. Najgori slučaj je lanac, gdje je trošak inserta jednak kao i kod povezane liste [O(n)] <br>
+        </p>
+
+        <h3>Vremenska složenost procedure</h2>
+        <p>
+            Za relativno mali broj insert operacija, insert operacija će početi dominirati u VSA. <br>
+            <b>Best case: </b> Svaki insert košta O(lg n) => VSA algoritma je O (n * lgn) <br>
+            <b>Worst case: </b> Svaki insert košta O(n) => VSA algoritma je O (n^2) <br>
+        </p>
+
+    </body>
+</html>
