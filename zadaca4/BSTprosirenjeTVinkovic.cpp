@@ -248,8 +248,9 @@ void addNodesOptimized(Node* src1, Node* src2, vector<int>& nodes) {
     //jer su onda sigurno oba nullptr
     if(src1 == nullptr) return;
 
-    nodes.push_back((src1->key + src2->key));
+    //dodavanje nodeova u array inorder metodom => nodeovi ce biti sortirani
     addNodesOptimized(src1->left, src2->left, nodes);
+    nodes.push_back((src1->key + src2->key));
     addNodesOptimized(src1->right, src2->right, nodes);
 }
 
