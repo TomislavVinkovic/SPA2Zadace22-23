@@ -318,14 +318,6 @@ class AVL : public BST {
             return node;
         }
 
-        virtual void inorder(Node *node) override {
-            if (node == nullptr)
-                return;
-            inorder(node->left);
-            cout << node->key << "(" << node->balanceFactor <<   ") ";
-            inorder(node->right);
-        }
-
     public:
         void insert(int key) override {
             //cout << "Inserting key " << key << endl;
