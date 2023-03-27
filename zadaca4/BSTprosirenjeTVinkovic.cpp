@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 using namespace std;
 
 struct Node
@@ -23,7 +24,7 @@ class BST
 
     //zad3
     friend BST BSTadd(BST& T1, BST& T2, bool optimize);
-    friend BST BSTbuilder(const vector<int>& nodes);
+    friend BST BSTbuilder(vector<int>& nodes);
 
 	Node *root;
 	Node* insert(int key, Node *node)
@@ -226,8 +227,14 @@ void SortedArrayToBST(const vector<int>& nodes, Node*& node, int start, int end)
     SortedArrayToBST(nodes, node->right, mid + 1, end);
 }
 
-BST BSTbuilder(const vector<int>& nodes) {
+BST BSTbuilder(vector<int>& nodes) {
     BST b;
+
+	//zbog inordera, vektor je vec sortiran
+	//pa mogu koristiti unique
+	auto last = unique(nodes.begin(), nodes.end());
+	nodes.erase(last, nodes.end());
+
     SortedArrayToBST(nodes, b.root, 0, nodes.size() - 1);
 
     return b;
